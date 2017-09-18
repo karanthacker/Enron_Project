@@ -85,7 +85,7 @@ function.scatter_plot(poi_total_fraction,total_net_worth,poi,plot_name)
 # selecting 10 most informative features out of 21 using SelectKBest
 # feature_scores is a list of features and their K_scores
 features,features_list,feature_scores = \
-function.select_10_features(features,labels,features_list)
+function.select_9_features(features,labels,features_list)
 
 # Provided to give you a starting point. Try a variety of classifiers.
 from sklearn.naive_bayes import GaussianNB
@@ -124,7 +124,7 @@ print "tried Random Forest"
 from sklearn.svm import SVC
 from sklearn.grid_search import GridSearchCV, RandomizedSearchCV
 param_grid = {
-         'pca__n_components':[7,8,9,10],
+         'pca__n_components':[6,7,8,9],
          'classifier__C':[0.1,1,10,1000],
          'classifier__gamma':[0.1,0.01,0.001]
           }
@@ -163,6 +163,6 @@ print "precision:", precision_score(labels_test,pred)
 ### check your results. You do not need to change anything below, but make sure
 ### that the version of poi_id.py that you submit can be run on its own and
 ### generates the necessary .pkl files for validating your results.
-
+print "final model result using StratifiedShuffleSplit"
 test_classifier(clf,my_dataset,features_list,folds = 1000)
 dump_classifier_and_data(clf, my_dataset, features_list)

@@ -81,11 +81,11 @@ def scatter_plot(x,y,poi,name):
 # function to return a list of 10 most informative features out of a list of 21
 # the univariate feature selection is based on funct SelectKBest on the criteria
 # ANOVA F-value'''    
-def select_10_features(features,labels,features_list,k=10) :
+def select_9_features(features,labels,features_list,k=9) :
     clf = SelectKBest(f_classif,k)
     selected_features = clf.fit_transform(features,labels)
     features_selected=[features_list[i+1] for i in clf.get_support(indices=True)]
-    feature_scores = zip(features_list[1:11],clf.scores_[:10])
+    feature_scores = zip(features_list[1:10],clf.scores_[:9])
     feature_scores = sorted(feature_scores,key=lambda x: x[1],reverse=True)
     print 'Final 10 Features selected by SelectKBest:'
     print features_selected
