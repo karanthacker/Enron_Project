@@ -1,0 +1,3 @@
+resources :
+http://scikit-learn.org/stable/index.html
+https://stackoverflow.com/
