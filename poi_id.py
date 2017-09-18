@@ -53,8 +53,7 @@ my_dataset = data_dict
 
 ### Extract features and labels from dataset for local testing
 data = featureFormat(my_dataset, features_list, sort_keys = True)
-labels, features = targetFeatureSplit(data
-                                      )
+labels, features = targetFeatureSplit(data)
 # storing the data of features in a list to plot in matplotlyb
 poi = list(data[:,0])
 salary = list(data[:,1])
@@ -124,7 +123,7 @@ print "tried Random Forest"
 from sklearn.svm import SVC
 from sklearn.grid_search import GridSearchCV, RandomizedSearchCV
 param_grid = {
-         'pca__n_components':[6,7,8,9],
+         'pca__n_components':[5,6,7,8],
          'classifier__C':[0.1,1,10,1000],
          'classifier__gamma':[0.1,0.01,0.001]
           }
@@ -149,7 +148,7 @@ features_train, features_test, labels_train, labels_test = \
     train_test_split(features, labels, test_size=0.3, random_state=42)
 estimators = [('pca',PCA()),('Naive bayes',GaussianNB())]
 pipe = Pipeline(estimators)
-param_grid = {'pca__n_components':[5,6,7,8,9]}
+param_grid = {'pca__n_components':[4,5,6,7,8]}
 gs = GridSearchCV(pipe, param_grid,n_jobs=1,scoring = 'f1',cv=3)
 gs.fit(features_train,labels_train)
 clf = gs.best_estimator_
